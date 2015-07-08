@@ -253,7 +253,10 @@ function findWord() {
         }
     }
 
-    //============= Open / Read The .txt file for each program ================//
+    //============= Open / Read The .txt file for each program ===============//
+
+
+    //============= Longest Word Reader =====================================//
 
     window.longestReadText = function () {
         
@@ -271,41 +274,7 @@ function findWord() {
         } //end if html5 filelist support
     }
 
-    window.wordsearchReadText = function () {
-
-        var output = "";
-
-        var filePath = document.getElementById('wordsearchFileInput');
-
-        if (filePath.files && filePath.files[0]) {
-            reader.onload = function (e) {
-                output = e.target.result;
-                var wordSearch = wordSearchChecker(output);
-                displayWordSearch(wordSearch)
-            }; //end onload()
-            reader.readAsText(filePath.files[0]);
-        } //end if html5 filelist support
-    }
-
-    window.wordFilterReadText = function () {
-
-        var output = "";
-
-        var filePath = document.getElementById('wordFilterFileInput');
-
-        if (filePath.files && filePath.files[0]) {
-            reader.onload = function (e) {
-                output = e.target.result;
-                var wordFilter = wordFilterChecker(output);
-                displayWordFilter(wordFilter)
-            }; //end onload()
-            reader.readAsText(filePath.files[0]);
-        } //end if html5 filelist support
-    }
-
-
-
-    //=========== Longest Word Checker & Display =========//
+    //============= Longest Word Checker & Display =========================//
 
     function longestWordChecker(txt) {
         var str = txt.split(" ");
@@ -326,9 +295,103 @@ function findWord() {
 
     }
 
-    //=========== WordSearch Checker & Display =========//
+    
+    //============= Word Search Reader ======================================//
+
+    window.wordsearchReadText = function () {
+
+        var output = "";
+
+        var filePath = document.getElementById('wordsearchFileInput');
+
+        if (filePath.files && filePath.files[0]) {
+            reader.onload = function (e) {
+                output = e.target.result;
+                var wordSearch = wordSearchChecker(output);
+                displayWordSearch(wordSearch)
+            }; //end onload()
+            reader.readAsText(filePath.files[0]);
+        } //end if html5 filelist support
+    }
+    
+    //============= WordSearch Checker & Display ==========================//
+
+    function wordSearchChecker(txt) {
+        var userKeyWord = document.getElementById('userKeyWord').value;
+        var wordSearch = '';
+        var array = txt.match(new RegExp(userKeyWord, 'gi'));
+
+        if (array == null) {
+            //var userResult = userKeyWord + " does not appear in this text.";
+            wordSearch = userKeyWord + " does not appear in this file.";
+
+        } else if (array.length == 1) {
+            wordSearch = userKeyWord + " appears " + array.length + " time.";
+            wordSearch += "<br/>";
+            wordSearch += "<br/>";
+            //var userResult = userText.replace(new RegExp(userKeyWord, 'gi'), "<strong class='word-highlight'>" + userKeyWord + "</strong>");
+            wordSearch += txt.replace(new RegExp(userKeyWord, 'gi'), "<strong class='word-highlight'>" + userKeyWord + "</strong>");
+        } else {
+            wordSearch = userKeyWord + " appears " + array.length + " times.";
+            wordSearch += "<br/>";
+            wordSearch += "<br/>";
+            wordSearch += txt.replace(new RegExp(userKeyWord, 'gi'), "<strong class='word-highlight'>" + userKeyWord + "</strong>");
+        }
+
+        return wordSearch;
+    }
+
+    function displayWordSearch(word) {
+        var searchResult = document.getElementById('resultWordSearch');
+        searchResult.innerHTML = word;
+    }
+
+    
+    //============  Word Filter Reader =====================================//
+
+    window.wordFilterReadText = function () {
+
+        var output = "";
+
+        var filePath = document.getElementById('wordFilterFileInput');
+
+        if (filePath.files && filePath.files[0]) {
+            reader.onload = function (e) {
+                output = e.target.result;
+                var wordFilter = wordFilterChecker(output);
+                displayWordFilter(wordFilter)
+            }; //end onload()
+            reader.readAsText(filePath.files[0]);
+        } //end if html5 filelist support
+    }
 
 
+    //============== Word Filter Checker & Display =======================//
+
+    function wordFilterChecker(txt) {
+        var userNumber = parseFloat(document.getElementById('userNumberWordFilter').value);
+        var textArray = txt.split(" ");
+
+        var wordFilter = '';
+        var selectedWord = '';
+
+        for (i = 0; i < textArray.length; i++) {
+            selectedWord = textArray[i].replace(/[^\w]/gi, '');
+            if (selectedWord.length > userNumber) {
+                wordFilter += selectedWord + "<br/>";
+            }
+
+        }
+
+            return wordFilter;
+
+    }
+
+
+    function displayWordFilter(word) {
+        var filterResult = document.getElementById('filterResult');
+        filterResult.innerHTML += word + "<br/>";
+    }
 
 })();
 

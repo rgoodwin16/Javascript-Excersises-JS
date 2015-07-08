@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coder Foundry Javascript Exercises | Ray Goodwin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--  Javascript -->
+        <script type="text/javascript" src="cfje.js"></script>                                                              <!-- Add Excersise Javascript -->
+        <script src="modernizr.js"></script>                                                                                <!-- Add HTML5 & CSS3 Support to Older Browsers -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>                            <!-- Add JQuery Support -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>                          <!-- Add Bootstrap Support -->
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="cfje.css" />                                                           <!-- Add Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="normalize.css" />                                                      <!-- Add Standard Default Styles across browsers -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">                 <!-- Add Bootstrap CSS -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>     <!-- Add Google Fonts -->
+        
+    </head>
+<body onload="checkFileAPI();">
+    <div class="container">
+
+        <h3>Math Exerecises</h3>
+        <section id="excersises-01">
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#max-sum-multiply">Max | Sum | Multiply</button><br /><br />
+
+            <div id="max-sum-multiply" class="collapse">
+                <h3>Max of Five | Sum of Five | Multiply Five</h3>
+                <p>This program is designed to look a group of numbers, display the largest of the group, give the sum of the group, and multiply the group.</p>
+                <p>Please enter a different number into each box.</p>
+                <input type="text" id="num1" class="form-control" />
+                <input type="text" id="num2" class="form-control" />
+                <input type="text" id="num3" class="form-control" />
+                <input type="text" id="num4" class="form-control" />
+                <input type="text" id="num5" class="form-control" /><br />
+                <input type="button" value="Largest Number" onclick="maxOfFive()" class="btn btn-success" />
+                <input type="button" value="Sum" onclick="sumOfFive()" class="btn btn-success" />
+                <input type="button" value="Multiply" onclick="multiplyFive()" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultMax"></p>
+                    <p id="resultSum"></p>
+                    <p id="resultMultiply"></p>
+                </div>
+
+            </div><!-- end max-sum-multiply -->
+
+            <button type="button" class=" btn btn-info" data-toggle="collapse" data-target="#factorials">Factorials</button><br /><br />
+
+            <div id="factorials" class="collapse">
+                <h3>Factorials</h3>
+                <p>What is a <a href="http://en.wikipedia.org/wiki/Factorial">factorial</a> ?</p>
+                <p>In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example,</p>
+                <p>5! = 5 x 4 x 3 x 2 x 1 = 120.</p>
+                <p>This program is designed to display the Factorial of a given number.</p>
+                <p>Please enter a number.</p>
+                <input type="text" id="factNum" class="form-control" />
+                <input type="button" value="Calculate" onclick="factorial()" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultFact"></p>
+                </div>
+            </div><!-- end factorials -->
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#perfect-numbers">Perfect Numbers</button><br /><br />
+
+            <div id="perfect-numbers" class="collapse">
+                <h3>Perfect Numbers</h3>
+                <p>What is a <a href="http://en.wikipedia.org/wiki/Perfect_number">perfect number</a> ?</p>
+                <p>In number theory, a perfect number is a positive integer that is equal to the sum of its proper positive divisors, that is, the sum of its positive divisors excluding the number itself (also known as its aliquot sum). Equivalently, a perfect number is a number that is half the sum of all of its positive divisors (including itself) i.e. σ1(n) = 2n.</p>
+                <p>The first perfect number is 6, because 1, 2, and 3 are its proper positive divisors, and 1 + 2 + 3 = 6.</p>
+                <p>This program is designed to calculate and then display all Perfect Numbers between 1 &amp; 10000.</p>
+                <input type="button" value="Calculate" onclick="displayPerfect(1)" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultPerfect"></p>
+                </div>
+            </div><!-- end perfect-numbers -->
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#happy-numbers">Happy Numbers</button><br /><br />
+
+            <div id="happy-numbers" class="collapse">
+                <h3>Happy Numbers</h3>
+                <p>What is a <a href="http://en.wikipedia.org/wiki/Happy_number">happy number</a> ?</p>
+                <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers, while those that do not end in 1 are unhappy numbers (or sad numbers).</p>
+                <p>For example, 19 is happy, as the associated sequence is:</p>
+                <p>1<sup>2</sup> + 9<sup>2</sup> = 82</p>
+                <p>8<sup>2</sup> + 2<sup>2</sup> = 68</p>
+                <p>6<sup>2</sup> + 8<sup>2</sup> = 100</p>
+                <p>1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1.</p>
+                <p>This program is designed to calculate and then display the first five Happy Numbers.</p>
+                <input type="button" value="Calculate" onclick="disHappy(1)" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultHappy"></p>
+                </div>
+            </div><!-- end happy-numbers -->
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#armstrong-numbers">Armstrong Numbers</button><br /><br />
+
+            <div id="armstrong-numbers" class="collapse">
+                <h3>Armstrong Numbers</h3>
+                <p>What is an <a href="http://en.wikipedia.org/wiki/Narcissistic_number#Armstrong_number">armstrong number</a> ?</p>
+                <p>In recreational number theory, a narcissistic number (also known as a pluperfect digital invariant (PPDI), an Armstrong number[4] (after Michael F. Armstrong) or a plus perfect number)[6] is a number that is the sum of its own digits each raised to the power of the number of digits. This definition depends on the base b of the number system used, e.g., b = 10 for the decimal system or b = 2 for the binary system.</p>
+                <p>For example, 153 is an armstrong number, as the associated sequence is:</p>
+                <p>1<sup>3</sup> + 5<sup>3</sup> + 3<sup>3</sup> = 153.</p>
+                <p>This program is desgnined to calaculate and then display all three digit Armstrong Numbers.</p>
+                <input type="button" value="Calculate" onclick="disArmstrong(100)" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultArmstrong"></p>
+                </div>
+            </div><!-- end armstrong-numbers -->
+
+
+
+        </section><!-- excersise 01 / Math Excersizes -->
+
+        <h3>Word Exercises</h3>
+
+        <section id="exercises 02">
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#palindrome">Palindrome</button><br /><br />
+
+            <div id="palindrome" class="collapse">
+                <h3>Palindromes</h3>
+                <p>This program is designed to see if what is given is a Palindrome.</p>
+                <p>Please enter some text.</p>
+                <input type="text" id="textPalindrome" class="form-control" />
+                <input type="button" value="Is This a Palindrome?" onclick="palindrome()" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultPal"></p>
+                </div>
+            </div><!-- end palindrome -->
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#fizz-buzz">FizzBuzz</button><br /><br />
+
+            <div id="fizz-buzz" class="collapse">
+                <h3>FizzBuzz</h3>
+                <p>This program is designed to display all the numbers between 1 &amp; 100, with every number that is a multiple of 3 being replaced with the word "Fizz", every number that is a multiple of 5 being replaced with the word "Buzz", and finally any number that is a multiple of both 3 &amp; 5 being replaced with the word "FizzBuzz".</p>
+                <input type="button" value="Display Numbers" onclick="fizzBuzz()" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultFizz"></p>
+                </div>
+            </div><!-- end fizz-buzz -->
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#longest-word">Longest Word</button><br /><br />
+
+            <div id="longest-word" class="collapse">
+                <h3>Longest Word</h3>
+                <p>This program is designed to search through a text file and display the longest word within it.</p>
+                <input type="file" id="longestFileInput" /><br />
+                <input type="button" value="Search" onclick="longestReadText()" class="btn btn-success" />
+
+                <div class="results">
+                    <p id="resultLongest"></p>
+                </div>
+            </div><!-- end longest-word -->
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#word-search">Word Search</button><br /><br />
+
+            <div id="word-search">
+                <h3>Word Search</h3>
+                <p>This program is designed to search through a text doucument and look for a designated keyword.  If the word appears in the text file, then the program will display how many times the word appears.</p>
+                <input type="file" id="wordsearchFileInput" /><br />
+                <input type="text" id="userKeyWord" class="form-control"><br />
+                <input type="button" value="Search" onclick="wordsearchReadText()" class="btn btn-success" />
+
+            <div class="results">
+                <p id="resultWordSearch"></p>
+            </div>
+            </div><!-- end word-search -->
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#word-filter">Word Filter</button><br /><br />
+
+            <div id="word-filter">
+                <p>This program is designed to search through a text file, find every word that is longer than a given interger, and then display those words.</p>
+                <input type="file" id="wordFilterFileInput" /><br />
+                Enter an word lenght: <br />
+                <input type="text" id="userNumberWordFilter" class="form-control"><br />
+                <input type="button" value="Search" onclick="wordFilterReadText()" class="btn btn-success" />
+            
+            <div class="results">
+                <p id="filterResult"></p>
+            </div>
+
+            </div><!-- end word-filter -->
+            
+
+        </section><!-- end exercises 02 -->
+
+    </div><!-- end container -->
+</body>
+</html>
