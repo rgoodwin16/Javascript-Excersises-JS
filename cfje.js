@@ -374,11 +374,15 @@ function findWord() {
 
         var wordFilter = '';
         var selectedWord = '';
+        var printedWords = {};
 
         for (i = 0; i < textArray.length; i++) {
-            selectedWord = textArray[i].replace(/[^\w]/gi, '');
+            selectedWord = textArray[i].replace(/[^\w]/gi, '').toLowerCase();
             if (selectedWord.length > userNumber) {
-                wordFilter += selectedWord + "<br/>";
+                if (printedWords[selectedWord] == null) {
+                    wordFilter += selectedWord + "<br/>";
+                    printedWords[selectedWord] = true;
+                }
             }
 
         }
