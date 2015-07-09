@@ -212,34 +212,9 @@ function disArmstrong(num) {
     }
 }
 
-//Word Search | Highlighter
 
-function findWord() {
-    var userText = document.getElementById('userText').value;
-    var userKeyWord = document.getElementById('userKeyWord').value;
 
-    var array = userText.match(new RegExp(userKeyWord, 'gi'));
-
-    if (array == null) {
-        var userResult = userKeyWord + " does not appear in this text.";
-    } else if (array.length == 1) {
-        var userResult = userKeyWord + " appears " + array.length + " time.";
-        userResult += "<br/>";
-        userResult += "<br/>";
-        //var userResult = userText.replace(new RegExp(userKeyWord, 'gi'), "<strong class='word-highlight'>" + userKeyWord + "</strong>");
-        userResult += userText.replace(new RegExp(userKeyWord, 'gi'), "<strong class='word-highlight'>" + userKeyWord + "</strong>");
-    } else {
-        var userResult = userKeyWord + " appears " + array.length + " times.";
-        userResult += "<br/>";
-        userResult += "<br/>";
-        userResult += userText.replace(new RegExp(userKeyWord, 'gi'), "<strong class='word-highlight'>" + userKeyWord + "</strong>");
-    }
-
-    var searchResult = document.getElementById('resultWordSearch');
-    searchResult.innerHTML = userResult;
-}
-
-//Longest Word | WordSearch | Word Filter
+//Longest Word | WordSearch | Word Filter | Word Frequency
 
 (function () {
     var reader;
